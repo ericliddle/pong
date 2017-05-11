@@ -5,7 +5,7 @@ export default class Game {
 		this.width = width;
 		this.height = height;
 	
-		// Other code goes here...
+		this.gameElement = 
 	}
 
 	render() {
