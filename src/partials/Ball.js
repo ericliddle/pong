@@ -70,11 +70,16 @@ export default class Ball {
         && this.y >= topY
         //&& the ball Y <= bottom edge of the paddle
         && this.y <= bottomY
-        ){
+      ) {
         this.vx = -this.vx;
 
       }
     }
+  }
+  goal( player ) {
+    player.score++;
+    this.reset();
+
   }
 
   render(svg, player1, player2) {
@@ -90,5 +95,17 @@ export default class Ball {
     circle.setAttributeNS(null, 'r', this.radius);
     circle.setAttributeNS(null, 'fill', 'magenta');
     svg.appendChild(circle);
+
+    // Detect goal
+    const rightGoal = this.x + this.radius >= this.boardWidth;
+    const leftGoal = this.x - this.radius <= 0;
+
+    if ( rightGoal ) {
+      this.goal(player1);
+      this.direction = 1;
+    } else if ( leftGoal ) {
+      this.goal(player2);
+      this.direction = -1;
+    }
   }
 }
