@@ -6,6 +6,8 @@ export default class Ball {
     this.boardWidth = boardWidth;
     this.boardHeight = boardHeight;
     this.direction = 1;
+    this.ping = new Audio('public/sounds/pong-04.wav');
+
 
     this.reset();
   }
@@ -57,6 +59,7 @@ export default class Ball {
         && this.y <= bottomY
       ) {
         this.vx = -this.vx;
+        this.ping.play();
       }
     } else { //check for collision on player1
       let paddleL = player1.coordinates(player1.x, player1.y, player1.width, player1.height)
@@ -72,6 +75,7 @@ export default class Ball {
         && this.y <= bottomY
       ) {
         this.vx = -this.vx;
+        this.ping.play();
 
       }
     }
