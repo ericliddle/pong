@@ -42,10 +42,20 @@ export default class Game {
 			this.radius,
 			this.width,
 			this.height
-		)
+		);
+
+		document.addEventListener('keydown', event => {
+			if (event.key === KEYS.spaceBar) {
+				this.pause = !this.pause;
+			}
+		})
 	}
 
 	render() {
+
+		if (this.pause) {
+			return;
+		}
 
 		this.gameElement.innerHTML = '';
 
@@ -58,7 +68,7 @@ export default class Game {
 		this.board.render(svg);
 		this.player1.render(svg);
 		this.player2.render(svg);
-		this.Ball.render(svg);
+		this.Ball.render(svg, this.player1, this.player2);
 	}
 
 }
