@@ -30,48 +30,37 @@ export default class Ball {
   }
 
   wallCollision() {
-    const hitLeft = this.x - this.radius <= 0;
-    const hitRight = this.x + this.radius >= this.boardWidth;
     const hitTop = this.y - this.radius <= 0;
     const hitBottom = this.y + this.radius >= this.boardHeight;
 
-    if (hitLeft || hitRight) {
-      this.vx = -this.vx;
-    } else if (hitTop || hitBottom) {
+    if (hitTop || hitBottom) {
       this.vy = -this.vy;
     }
   }
 
   paddleCollision(player1, player2) {
-    // if moving right, player2..
+
     if (this.vx > 0) {
       let paddleR = player2.coordinates(player2.x, player2.y, player2.width, player2.height);
       let [leftX, rightX, topY, bottomY] = paddleR;
 
       if (
-        //if the right edge of the ball is >= left edge of paddle
         this.x + this.radius >= leftX
-        //&& the right edge of the ball is <= right edge of paddle
         && this.x + this.radius <= rightX
-        //&& the ball Y >= top edge of the paddle
         && this.y >= topY
-        //&& the ball Y <= bottom edge of the paddle
         && this.y <= bottomY
       ) {
         this.vx = -this.vx;
         this.ping.play();
       }
-    } else { //check for collision on player1
+
+    } else {
       let paddleL = player1.coordinates(player1.x, player1.y, player1.width, player1.height)
       let [leftX, rightX, topY, bottomY] = paddleL;
       if (
-        //if the left edge of the ball is <= right edge of paddle
         this.x - this.radius <= rightX
-        //&& the right edge of the ball is <= right edge of paddle
         && this.x - this.radius >= leftX
-        //&& the ball Y >= top edge of the paddle
         && this.y >= topY
-        //&& the ball Y <= bottom edge of the paddle
         && this.y <= bottomY
       ) {
         this.vx = -this.vx;
@@ -80,7 +69,7 @@ export default class Ball {
       }
     }
   }
-  goal( player ) {
+  goal(player) {
     player.score++;
     this.reset();
 
@@ -104,10 +93,10 @@ export default class Ball {
     const rightGoal = this.x + this.radius >= this.boardWidth;
     const leftGoal = this.x - this.radius <= 0;
 
-    if ( rightGoal ) {
+    if (rightGoal) {
       this.goal(player1);
       this.direction = 1;
-    } else if ( leftGoal ) {
+    } else if (leftGoal) {
       this.goal(player2);
       this.direction = -1;
     }
