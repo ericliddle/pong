@@ -11,6 +11,7 @@ export default class Paddle {
     this.y = y;
     this.speed = 10;
     this.score = 0;
+    this.name = prompt('Enter Your Initials');
 
 
     document.addEventListener('keydown', event => {

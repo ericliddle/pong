@@ -7,14 +7,14 @@ export default class Score {
     this.y = y;
     this.size = size;
   }
-  render(svg, score) {
+  render(svg, scoreText) {
     let text = document.createElementNS(SVG_NS, 'text');
     text.setAttributeNS(null, 'x', this.x);
     text.setAttributeNS(null, 'y', this.y);
     text.setAttributeNS(null, 'size', this.size)
     text.setAttributeNS(null, 'font-family', 'Silkscreen Web, monotype');
     text.setAttributeNS(null, 'fill', 'white');
-    text.textContent = score;
+    text.textContent = scoreText;
     svg.appendChild(text);
   }
 }

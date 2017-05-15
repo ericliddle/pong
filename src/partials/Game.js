@@ -18,11 +18,14 @@ export default class Game {
 		this.size = 30;
 
 		this.board = new Board(this.width, this.height);
-		this.player1Score = new Score(this.width / 2 - 50, 25, 100);
-		this.player2Score = new Score(this.width / 2 + 25, 25, 100);
+		this.player1Score = new Score(this.width / 2 - 50, 50, 100);
+		this.player1name = new Score(this.width / 2 - 50, 25, 100);//name1
+		this.player2Score = new Score(this.width / 2 + 25, 50, 100);
+		this.player2Name = new Score(this.width / 2 + 25, 25, 100);//name2
 		this.paddleWidth = 8;
 		this.paddleHeight = 56;
 		this.padding = 10;
+		
 		this.player1 = new Paddle(
 			height,
 			this.paddleWidth,
@@ -76,6 +79,8 @@ export default class Game {
 		this.Ball.render(svg, this.player1, this.player2);
 		this.player1Score.render(svg, this.player1.score);
 		this.player2Score.render(svg, this.player2.score);
+		this.player1name.render(svg, this.player1.name);
+		this.player2Name.render(svg, this.player2.name);		
 	}
 
 }
