@@ -12,12 +12,10 @@ export default class Ball {
     this.reset();
   }
 
-  //Center ball in board initially
   reset() {
     this.x = this.boardWidth / 2;
     this.y = this.boardHeight / 2;
 
-    //generating a random number between -5 & 5, that's no 0
     this.vy = 0;
 
     while (this.vy === 0) {
@@ -25,7 +23,6 @@ export default class Ball {
     }
 
 
-    //ends up being a number between -5 & 5 based on vy calc
     this.vx = this.direction * (6 - Math.abs(this.vy));
   }
 
@@ -89,7 +86,6 @@ export default class Ball {
     circle.setAttributeNS(null, 'fill', 'magenta');
     svg.appendChild(circle);
 
-    // Detect goal
     const rightGoal = this.x + this.radius >= this.boardWidth;
     const leftGoal = this.x - this.radius <= 0;
 

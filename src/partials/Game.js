@@ -25,7 +25,7 @@ export default class Game {
 		this.paddleWidth = 8;
 		this.paddleHeight = 56;
 		this.padding = 10;
-		
+
 		this.player1 = new Paddle(
 			height,
 			this.paddleWidth,
@@ -80,7 +80,7 @@ export default class Game {
 		this.player1Score.render(svg, this.player1.score);
 		this.player2Score.render(svg, this.player2.score);
 		this.player1name.render(svg, this.player1.name);
-		this.player2Name.render(svg, this.player2.name);		
+		this.player2Name.render(svg, this.player2.name);
 	}
 
 }

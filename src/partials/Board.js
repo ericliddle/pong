@@ -21,7 +21,7 @@ export default class Board {
     line.setAttributeNS(null, 'x1', this.width / 2);
     line.setAttributeNS(null, 'x2', this.width / 2);
     line.setAttributeNS(null, 'y1', '0')
-    line.setAttributeNS(null, 'y2', this.width /2);
+    line.setAttributeNS(null, 'y2', this.width / 2);
     svg.appendChild(line);
   }
 }
